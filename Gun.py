@@ -14,6 +14,19 @@ class Gun:
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom
         
+        #flags for movement
+        self.mright = False
+        self.mleft = False
+        
     # draw the objecr
     def draw(self):
         self.screen.blit(self.image, self.rect)
+        
+    #update the object's position
+    def update_gun(self):
+        # for right move keys
+        if self.mright and self.rect.right < self.screen_rect.right:
+            self.rect.centerx += 1
+        # for left move keys    
+        if self.mleft and self.rect.left > 0:
+            self.rect.centerx -= 1

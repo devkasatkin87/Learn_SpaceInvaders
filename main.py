@@ -2,6 +2,7 @@ import pygame
 import sys
 
 from Gun import Gun
+from controls import *
 
 screen_size = (800, 600)
 
@@ -18,11 +19,11 @@ def run():
     
     while True:
         
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        events_listener(gun)
         
         screen.fill(BLACK)
+        
+        gun.update_gun()
         
         gun.draw()
         
