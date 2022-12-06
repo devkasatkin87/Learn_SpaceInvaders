@@ -1,5 +1,6 @@
 import pygame
 import sys
+from pygame.sprite import Group
 
 from Gun import Gun
 from controls import *
@@ -17,11 +18,14 @@ def run():
     
     gun = Gun(screen)
     
+    bullets = Group()
+    
     while True:
         
-        events_listener(gun)
+        events_listener(screen, gun,  bullets)
         gun.update_gun()
-        update(BLACK, screen, gun)
+        update(BLACK, screen, gun, bullets)
+        update_bullets(bullets)
         
 run()
     
