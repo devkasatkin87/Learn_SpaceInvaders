@@ -24,3 +24,8 @@ def events_listener(gun : Gun):
             #left    
             if event.key == pygame.K_a:
                 gun.mleft = False
+
+def update(bg_color, screen, gun):
+        screen.fill(bg_color)
+        gun.draw()
+        pygame.display.flip() 

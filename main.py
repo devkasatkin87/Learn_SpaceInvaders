@@ -20,14 +20,8 @@ def run():
     while True:
         
         events_listener(gun)
-        
-        screen.fill(BLACK)
-        
         gun.update_gun()
-        
-        gun.draw()
-        
-        pygame.display.flip() 
+        update(BLACK, screen, gun)
         
 run()
     

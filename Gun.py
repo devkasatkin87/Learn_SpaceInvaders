@@ -12,6 +12,7 @@ class Gun:
         
         # determine the center and bottom for the object
         self.rect.centerx = self.screen_rect.centerx
+        self.center = float(self.rect.centerx)
         self.rect.bottom = self.screen_rect.bottom
         
         #flags for movement
@@ -26,7 +27,9 @@ class Gun:
     def update_gun(self):
         # for right move keys
         if self.mright and self.rect.right < self.screen_rect.right:
-            self.rect.centerx += 1
+            self.center += 1.5
         # for left move keys    
         if self.mleft and self.rect.left > 0:
-            self.rect.centerx -= 1
+            self.center -= 1.5
+            
+        self.rect.centerx = self.center
