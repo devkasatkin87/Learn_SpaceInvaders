@@ -3,11 +3,15 @@ import sys
 from pygame.sprite import Group
 
 from Gun import Gun
-from controls import *
+import controls
 
-screen_size = (800, 600)
+screen_size = (700, 800)
 
 BLACK = (0,0,0)
+
+FPS = 60
+
+clock = pygame.time.Clock()
 
 # run application
 def run():
@@ -20,12 +24,18 @@ def run():
     
     bullets = Group()
     
+    inos = Group()
+    controls.draw_army(screen, inos)
+    
     while True:
         
-        events_listener(screen, gun,  bullets)
+        controls.events_listener(screen, gun,  bullets)
         gun.update_gun()
-        update(BLACK, screen, gun, bullets)
-        update_bullets(bullets)
+        controls.update(BLACK, screen, gun, inos, bullets)
+        controls.update_bullets(bullets)
+        controls.update_inos(inos)
+        
+        clock.tick(FPS)
         
 run()
     

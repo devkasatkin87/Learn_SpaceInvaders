@@ -27,9 +27,9 @@ class Gun:
     def update_gun(self):
         # for right move keys
         if self.mright and self.rect.right < self.screen_rect.right:
-            self.center += 1.5
+            self.center += 5
         # for left move keys    
         if self.mleft and self.rect.left > 0:
-            self.center -= 1.5
+            self.center -= 5
             
         self.rect.centerx = self.center

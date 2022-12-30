@@ -1,6 +1,7 @@
 import pygame, sys
 from Gun import Gun
 from Bullet import Bullet
+from Ino import Ino
 
 #events listener
 def events_listener(screen, gun : Gun, bullets):
@@ -32,11 +33,12 @@ def events_listener(screen, gun : Gun, bullets):
                 gun.mleft = False
 
 #update game's process
-def update(bg_color, screen, gun, bullets):
+def update(bg_color, screen, gun, inos, bullets):
         screen.fill(bg_color)
         for bullet in bullets.sprites():
             bullet.draw()
         gun.draw()
+        inos.draw(screen)
         pygame.display.flip() 
         
 #update bullet's process
@@ -45,4 +47,25 @@ def update_bullets(bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-    print(len(bullets))
+ 
+#update invader's postion            
+def update_inos(inos):
+    inos.update()
+
+# create army of invations
+def draw_army(screen, inos):
+    ino = Ino(screen)
+    ino_width = ino.rect.width
+    ino_height = ino.rect.height
+    number_ino_x = int((700 - 2 * ino_width) / ino_width)
+    number_ino_y = int((800 - 100 - 2 * ino_height) / ino_height)
+    
+    for row_number in range(number_ino_y):
+        for ino_number in range(number_ino_x):
+            ino = Ino(screen)
+            ino.x = ino_width + (ino_width * ino_number)
+            ino.y = ino_height + (ino_height * row_number)
+            ino.rect.x = ino.x
+            ino.rect.y = ino.y
+            inos.add(ino)
+    
